@@ -12,9 +12,10 @@ sequelize = new Sequelize('sharex', 'sharex', dbPassword, {
     define: {
         syncOnAssociation: false,
         timestamps: false,
-        charset: 'latin1',
-        collate: 'latin1_swedish_ci',
+        charset: 'utf8',
+        collate: 'utf8_general_ci',
     },
+    logging: false
     // timezone: timezoneOffset + ':00'
 });
 
