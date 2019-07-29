@@ -21,7 +21,7 @@ exports.isTokenValid = function (req, res, next) {
             }).then(function ([user, created]) {
                 req.user = user;
                 next();
-            })
+            });
         }
     } else {
         res.status(401).send({ message: 'Invalid Token' });
