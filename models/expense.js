@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
         createdAt: DataTypes.DATE,
         breakdown: DataTypes.STRING,
         title: DataTypes.STRING,
-        total: DataTypes.DECIMAL,
+        total: {
+            type: DataTypes.DECIMAL,
+            get () {
+                return Number(this.getDataValue('total'));
+            }
+        },
         category: DataTypes.STRING
     }, {
         charset: 'utf8',

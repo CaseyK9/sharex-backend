@@ -9,9 +9,13 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    // Couple.associate = function (models) {
-    //     models.Couple.hasMany(models.User);
-    // };
+    Couple.associate = function (models) {
+        models.Couple.hasMany(models.User, {
+            foreignKey: {
+                name: 'coupleId',
+            }
+        });
+    };
 
     return Couple;
 };
