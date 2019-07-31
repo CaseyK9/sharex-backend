@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 var bodyParser = require('body-parser');
 global.fetch = require('node-fetch');
 var authUtils = require('./utils/auth');
@@ -13,6 +14,7 @@ var coupleRouter = require('./routes/couple');
 var expenseRouter = require('./routes/expense');
 
 var app = express();
+app.use(cors())
 
 app.use(logger('dev'));
 app.use(express.json());
