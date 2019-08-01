@@ -32,7 +32,8 @@ router.post('/signin', function (req, res) {
 });
 
 router.post('/refresh', function (req, res) {
-    var email = req.body.email;
+    var token = new AmazonCognitoIdentity.CognitoIdToken({ IdToken: req.body.token });
+    var email = token.payload.email;
     var refreshToken = req.body.refreshToken;
     var userData = {
         Username: email,
