@@ -4,7 +4,7 @@ var db = require('../models/index');
 
 router.get('/', function (req, res) {
     db.Expense.findAll({
-        order: db.Sequelize.literal('id DESC')
+        order: db.Sequelize.literal('createdAt DESC')
     }).then(function (expenses) {
         expenses = expenses.map(function (expense) {
             return processExpense(expense, req.user.email);
