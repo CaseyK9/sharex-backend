@@ -6,10 +6,15 @@ router.get('/', function (req, res) {
     db.Expense.findAll({
         order: db.Sequelize.literal('createdAt DESC')
     }).then(function (expenses) {
+        let balance = 0;
         expenses = expenses.map(function (expense) {
+            balance += expense.breakdown[req.user.email].paid - expense.breakdown[req.user.email].shouldPay;
             return processExpense(expense, req.user.email);
         });
-        res.json(expenses);
+        res.json({
+            balance: balance,
+            expenses: expenses,
+        });
     });
 });
 
